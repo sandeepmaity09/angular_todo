@@ -14,7 +14,6 @@ import {Tasks} from "../taskdetails";
 export class ShowComponent implements OnInit {
 
     task: RetTask;
-    task2: Tasks;
     retTasksArr:RetTask[] = [];
     tasksArr:Tasks[] = [];
 

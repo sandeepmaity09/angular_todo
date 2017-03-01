@@ -1,5 +1,5 @@
 import {ShowComponent} from "./show.component";
-import {RouterOutletMap, Router} from "@angular/router";
+import {RouterOutletMap, Router, ActivatedRoute} from "@angular/router";
 import {RouterTestingModule} from "@angular/router/testing";
 import {CommonModule} from "@angular/common";
 import {FormsModule} from "@angular/forms";
@@ -24,11 +24,15 @@ describe('ShowComponent', function () {
         }
     }
 
+    class MockActivatedRouter {
+        params = Observable.of<any>({'id':1})
+    }
+
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             declarations: [ShowComponent],
-            providers: [{provide: Router, useClass: MockRouter}, RouterOutletMap, TaskService],
+            providers: [{provide: Router, useClass: MockRouter},{provide:ActivatedRoute,useClass:MockActivatedRouter}, RouterOutletMap, TaskService],
             imports: [RouterTestingModule, CommonModule, FormsModule, HttpModule]
 
         })
@@ -42,8 +46,7 @@ describe('ShowComponent', function () {
             date: '22/11/33',
             title: 'Title',
             description: 'hello',
-            priority: 'high',
-            _id: '123'
+            priority: 'high'
         }]
         de = fixture.debugElement.query(By.css('h1'));
         service = fixture.debugElement.injector.get(TaskService);
@@ -53,7 +56,7 @@ describe('ShowComponent', function () {
     it('should create component', () => expect(comp).toBeDefined());
 
 
-    it('it should be able to get data from service', () => {
+/*    it('it should be able to get data from service', () => {
         spyOn(service, 'getData').and.returnValue(
             Observable.of<any>(
                 [{
@@ -73,31 +76,30 @@ describe('ShowComponent', function () {
             priority: '',
             _id: ''
         }])
-    });
+    });*/
 
     it('it should be able to delete data from service',() =>{
-        spyOn(window, "alert");
+        // spyOn(window, "alert");
         spyOn(service,'delete').and.returnValue(
             Observable.of<any>(
                 [{
+                    _id:'',
                     date: '',
                     title: '',
                     description: '',
-                    priority: '',
-                    _id: ''
+                    priority: ''
                 }]
             )
         );
-        comp.deleteTask(0);
+        comp.deleteTask(1);
         expect(window.alert).toHaveBeenCalledWith('Task Removed');
         router.navigate([]).then(data => {
             expect(data).toBe(true);
         })
-
     });
 
     it('it should be able to edit data from service',() =>{
-        spyOn(service,'remove').and.returnValue(
+        spyOn(service,'update').and.returnValue(
             Observable.of<any>(
                 [{
                     date: '',
@@ -114,6 +116,5 @@ describe('ShowComponent', function () {
         })
 
     });
-
 
 });

@@ -21,9 +21,9 @@ export class TaskService{
             .map((data:any)=>{
             return this.extractData(data)
             })
-            // .catch((e:any)=>{
-            // return Observable.throw<any>(new Error("error"))
-            // })
+            .catch((e:any)=>{
+            return this.handleError(e)
+            })
     }
 
 

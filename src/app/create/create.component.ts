@@ -37,7 +37,6 @@ export class CreateComponent implements OnInit {
         });
     }
 
-
     submit() {
         if (this.index || this.index === 0) {
             this.service.update(this.task)

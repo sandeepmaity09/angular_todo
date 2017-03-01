@@ -25,10 +25,10 @@ var TaskService = (function () {
         return this.http.get('http://localhost:9000/get/all', { headers: jsonHeader })
             .map(function (data) {
             return _this.extractData(data);
+        })
+            .catch(function (e) {
+            return _this.handleError(e);
         });
-        // .catch((e:any)=>{
-        // return Observable.throw<any>(new Error("error"))
-        // })
     };
     // addData(task: Tasks): Observable<any> {
     //
