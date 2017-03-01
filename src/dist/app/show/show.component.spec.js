@@ -26,7 +26,7 @@ describe('ShowComponent', function () {
     }());
     var MockActivatedRouter = (function () {
         function MockActivatedRouter() {
-            this.params = Observable_1.Observable.of({ 'id': 1 });
+            this.params = Observable_1.Observable.of({ '_id': 0 });
         }
         return MockActivatedRouter;
     }());
@@ -52,29 +52,24 @@ describe('ShowComponent', function () {
         router = fixture.debugElement.injector.get(router_1.Router);
     });
     it('should create component', function () { return expect(comp).toBeDefined(); });
-    /*    it('it should be able to get data from service', () => {
-            spyOn(service, 'getData').and.returnValue(
-                Observable.of<any>(
-                    [{
-                        date: '',
-                        title: '',
-                        description: '',
-                        priority: '',
-                        _id: ''
-                    }]
-                )
-            );
-            comp.ngOnInit();
-            expect(comp.task).toEqual([{
+    it('it should be able to get data from service', function () {
+        spyOn(service, 'getData').and.returnValue(Observable_1.Observable.of([{
+                _id: '',
                 date: '',
                 title: '',
                 description: '',
                 priority: '',
-                _id: ''
-            }])
-        });*/
+            }]));
+        comp.ngOnInit();
+        expect(comp.retTasksArr).toEqual([{
+                _id: '',
+                date: '',
+                title: '',
+                description: '',
+                priority: '',
+            }]);
+    });
     it('it should be able to delete data from service', function () {
-        // spyOn(window, "alert");
         spyOn(service, 'delete').and.returnValue(Observable_1.Observable.of([{
                 _id: '',
                 date: '',
@@ -82,9 +77,8 @@ describe('ShowComponent', function () {
                 description: '',
                 priority: ''
             }]));
-        comp.deleteTask(1);
-        expect(window.alert).toHaveBeenCalledWith('Task Removed');
-        router.navigate([]).then(function (data) {
+        comp.deleteTask(0);
+        router.navigate([{}]).then(function (data) {
             expect(data).toBe(true);
         });
     });

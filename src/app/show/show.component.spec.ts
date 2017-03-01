@@ -25,7 +25,7 @@ describe('ShowComponent', function () {
     }
 
     class MockActivatedRouter {
-        params = Observable.of<any>({'id':1})
+        params = Observable.of<any>({'_id':0})
     }
 
 
@@ -56,30 +56,29 @@ describe('ShowComponent', function () {
     it('should create component', () => expect(comp).toBeDefined());
 
 
-/*    it('it should be able to get data from service', () => {
+    it('it should be able to get data from service', () => {
         spyOn(service, 'getData').and.returnValue(
             Observable.of<any>(
                 [{
+                    _id:'',
                     date: '',
                     title: '',
                     description: '',
                     priority: '',
-                    _id: ''
                 }]
             )
         );
         comp.ngOnInit();
-        expect(comp.task).toEqual([{
+        expect(comp.retTasksArr).toEqual([{
+            _id:'',
             date: '',
             title: '',
             description: '',
             priority: '',
-            _id: ''
         }])
-    });*/
+    });
 
     it('it should be able to delete data from service',() =>{
-        // spyOn(window, "alert");
         spyOn(service,'delete').and.returnValue(
             Observable.of<any>(
                 [{
@@ -91,9 +90,8 @@ describe('ShowComponent', function () {
                 }]
             )
         );
-        comp.deleteTask(1);
-        expect(window.alert).toHaveBeenCalledWith('Task Removed');
-        router.navigate([]).then(data => {
+        comp.deleteTask(0);
+        router.navigate([{}]).then(data => {
             expect(data).toBe(true);
         })
     });
