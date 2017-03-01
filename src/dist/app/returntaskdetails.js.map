@@ -1,0 +1,1 @@
+{"version":3,"file":"returntaskdetails.js","sourceRoot":"","sources":["../../app/returntaskdetails.ts"],"names":[],"mappings":";AAAA;IAQI;QACI,IAAI,CAAC,GAAG,GAAG,GAAG,CAAC;QACf,IAAI,CAAC,IAAI,GAAG,GAAG,CAAC;QAChB,IAAI,CAAC,KAAK,GAAG,GAAG,CAAC;QACjB,IAAI,CAAC,WAAW,GAAG,GAAG,CAAC;QACvB,IAAI,CAAC,QAAQ,GAAG,GAAG,CAAC;IACxB,CAAC;IACL,cAAC;AAAD,CAAC,AAfD,IAeC;AAfY,eAAO,UAenB,CAAA"}

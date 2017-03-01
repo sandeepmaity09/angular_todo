@@ -1,0 +1,11 @@
+<div class ="container" >
+    <h1 >  ToDo Lister </h1>
+    <div  id="routerstyle">
+        <a  class="linkstyle" [routerLink]="['\show']"><button type="button" class="btn btn-primary">show task</button></a>
+        <a  class="linkstyle" [routerLink]="['\create']"><button type="button" class="btn btn-primary">create task</button></a>
+    </div>
+
+</div >
+<div id="outlet">
+    <router-outlet></router-outlet>
+</div>

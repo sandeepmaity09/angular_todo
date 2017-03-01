@@ -1,0 +1,28 @@
+<div class="container">
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Date</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Priority</th>
+            <th>Delete</th>
+            <th>Edit</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let tsk of retTasksArr; let i = index">
+            <td>{{tsk.date}}</td>
+            <td>{{tsk.title}}</td>
+            <td>{{tsk.description}}</td>
+            <td>{{tsk.priority}}</td>
+            <td><span (click)="deleteTask(i)" class="delete-icon">
+                <button class="btn btn-default">Delete</button>
+            </span> </td>
+            <td><span (click)="editTask(i)" class="delete-icon">
+                <button class="btn btn-default">Edit</button>
+            </span> </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
