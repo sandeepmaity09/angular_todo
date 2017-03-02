@@ -69,19 +69,23 @@ describe('ShowComponent', function () {
                 priority: '',
             }]);
     });
-    it('it should be able to delete data from service', function () {
-        spyOn(service, 'delete').and.returnValue(Observable_1.Observable.of([{
-                _id: '',
-                date: '',
-                title: '',
-                description: '',
-                priority: ''
-            }]));
-        comp.deleteTask(0);
-        router.navigate([{}]).then(function (data) {
-            expect(data).toBe(true);
-        });
-    });
+    /*    it('it should be able to delete data from service',() =>{
+            spyOn(service,'delete').and.returnValue(
+                Observable.of<any>(
+                    [{
+                        _id:'',
+                        date: '',
+                        title: '',
+                        description: '',
+                        priority: ''
+                    }]
+                )
+            );
+            comp.deleteTask(0);
+            router.navigate([{}]).then(data => {
+                expect(data).toBe(true);
+            })
+        });*/
     it('it should be able to edit data from service', function () {
         spyOn(service, 'update').and.returnValue(Observable_1.Observable.of([{
                 date: '',
